@@ -19,8 +19,8 @@ var Snow = Backbone.View.extend({
             documentWidth = $(document).width(),
             defaults = {
                 flakeChar: "&#10052;",
-                minSize: 20,
-                maxSize: 30,
+                minSize: 15,
+                maxSize: 25,
                 newOn: 200,
                 flakeColor: ["#ffffff"],
                 durationFall: 2000,
@@ -28,7 +28,7 @@ var Snow = Backbone.View.extend({
             },
             options = $.extend({}, defaults, options);
 
-        this.height = documentHeight * 0.8;
+        this.height = documentHeight * 0.85;
         this.width = documentWidth;
         this.durationFall = options.durationFall;
         $flake.html(options.flakeChar);

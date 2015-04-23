@@ -85,8 +85,9 @@ var Loading = Backbone.View.extend({
 
         $percentDiv.css({
             'position': 'absolute',
-            'bottom': '70%',
+            'bottom': '65%',
             'width': '100%',
+            'height': '50px',
             'text-align': 'center',
             'color': '#ffffff'
         });
@@ -96,7 +97,8 @@ var Loading = Backbone.View.extend({
             'width': '100px',
             'margin-left': '-50px',
             'font-size': '16px',
-            'line-height': '16px'
+            'line-height': '16px',
+            'left': '50%'
         });
         this.$el.find('.percent').css({
             'position': 'absolute',
@@ -104,7 +106,8 @@ var Loading = Backbone.View.extend({
             'top': '25px',
             'margin-left': '-50px',
             'font-size': '25px',
-            'line-height': '25px'
+            'line-height': '25px',
+            'left': '50%'
         });
     },
 
@@ -12623,8 +12626,8 @@ var Snow = Backbone.View.extend({
             documentWidth = $(document).width(),
             defaults = {
                 flakeChar: "&#10052;",
-                minSize: 20,
-                maxSize: 30,
+                minSize: 15,
+                maxSize: 25,
                 newOn: 200,
                 flakeColor: ["#ffffff"],
                 durationFall: 2000,
@@ -12632,7 +12635,7 @@ var Snow = Backbone.View.extend({
             },
             options = $.extend({}, defaults, options);
 
-        this.height = documentHeight * 0.8;
+        this.height = documentHeight * 0.85;
         this.width = documentWidth;
         this.durationFall = options.durationFall;
         $flake.html(options.flakeChar);

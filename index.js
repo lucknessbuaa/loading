@@ -70,8 +70,9 @@ var Loading = Backbone.View.extend({
 
         $percentDiv.css({
             'position': 'absolute',
-            'bottom': '70%',
+            'bottom': '65%',
             'width': '100%',
+            'height': '50px',
             'text-align': 'center',
             'color': '#ffffff'
         });
@@ -81,7 +82,8 @@ var Loading = Backbone.View.extend({
             'width': '100px',
             'margin-left': '-50px',
             'font-size': '16px',
-            'line-height': '16px'
+            'line-height': '16px',
+            'left': '50%'
         });
         this.$el.find('.percent').css({
             'position': 'absolute',
@@ -89,7 +91,8 @@ var Loading = Backbone.View.extend({
             'top': '25px',
             'margin-left': '-50px',
             'font-size': '25px',
-            'line-height': '25px'
+            'line-height': '25px',
+            'left': '50%'
         });
     },
 
