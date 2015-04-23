@@ -23,7 +23,7 @@ var Snow = Backbone.View.extend({
                 maxSize: 25,
                 newOn: 200,
                 flakeColor: ["#ffffff"],
-                durationFall: 2000,
+                durationFall: 4000,
                 durationMillis: null
             },
             options = $.extend({}, defaults, options);

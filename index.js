@@ -169,7 +169,7 @@ var Loading = Backbone.View.extend({
                 'width': '33px',
                 'height': '108px',
                 'left': '50%',
-                'margin-left': '-17px',
+                'margin-left': '-17.5px',
                 'z-index': '40',
                 'margin-bottom': '2px',
                 'clip': 'rect(108px, 33px, 108px, 0px)'
@@ -185,7 +185,7 @@ var Loading = Backbone.View.extend({
                 'width': '33px',
                 'height': '34px',
                 'left': '50%',
-                'margin-left': '-17px',
+                'margin-left': '-17.5px',
                 'margin-bottom': '12px',
                 'z-index': '50'
             });
