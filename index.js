@@ -1,4 +1,4 @@
-var async = require('async');
+//var async = require('async');
 var $ = require('jquery');
 var Backbone = require('backbone');
 Backbone.$ = $;
@@ -212,8 +212,8 @@ var Loading = Backbone.View.extend({
     },
 
     destroy: function() {
-        //this.snow.destroy();
-        //this.$el.detach();
+        this.snow.destroy();
+        this.$el.detach();
     }
 });
 
