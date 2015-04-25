@@ -1,5 +1,4 @@
-//var async = require('async');
-var $ = require('jquery');
+var $ = require('zepto-browserify').$;
 var Backbone = require('backbone');
 Backbone.$ = $;
 
@@ -14,6 +13,7 @@ var Loading = Backbone.View.extend({
         this.step = options.step;
         this.duration = options.duration;
         this.stepLength = Math.ceil(100 / this.step);
+        this.callback = options.callback;
 
         this.snow = new Snow();
         this.$el.append(this.snow.$el[0]);
@@ -52,7 +52,7 @@ var Loading = Backbone.View.extend({
             'left': '0px',
             'width': '100%',
             'height': '100%',
-            'background': 'url("./img/loadingBg.png") 0px 0px no-repeat',
+            'background': 'url("/static/images/loading/loadingBg.png") 0px 0px no-repeat',
             'background-size': '100% 100%'
         });
     },
@@ -98,8 +98,8 @@ var Loading = Backbone.View.extend({
 
     initText: function() {
         var image = new Image();
-        image.src = './img/loadingText.png';
-        $(image).load(function() {
+        image.src = '/static/images/loading/loadingText.png';
+        image.onload = function() {
             this.$el.append(image);
             $(image).css({
                 'position': 'absolute',
@@ -110,18 +110,13 @@ var Loading = Backbone.View.extend({
                 'left': '50%',
                 'margin-left': '-47px'
             });
-        }.bind(this));
-
-        $(image).error(function() {
-            //todo
-            console.log('image not found');
-        });
+        }.bind(this);
     },
 
     initLogo: function() {
         var image = new Image();
-        image.src = './img/loadingLogo.png';
-        $(image).load(function() {
+        image.src = '/static/images/loading/loadingLogo.png';
+        image.onload = function() {
             this.$el.append(image);
             $(image).css({
                 'position': 'absolute',
@@ -131,7 +126,7 @@ var Loading = Backbone.View.extend({
                 'left': '50%',
                 'margin-left': '-29px'
             });
-        }.bind(this));
+        }.bind(this);
 
         $(image).error(function() {
             //todo 
@@ -144,13 +139,13 @@ var Loading = Backbone.View.extend({
         this.$el.append($bottle);
 
         var image1 = new Image();
-        image1.src = './img/loadingBottle.png';
+        image1.src = '/static/images/loading/loadingBottle.png';
         var image2 = new Image();
-        image2.src = './img/loadingWater.png';
+        image2.src = '/static/images/loading/loadingWater.png';
         var image3 = new Image();
-        image3.src = './img/loadingBottleImg.png';
+        image3.src = '/static/images/loading/loadingBottleImg.png';
 
-        $(image1).load(function() {
+        image1.onload = function() {
             $(this).css({
                 'position': 'absolute',
                 'bottom': '38%',
@@ -160,9 +155,9 @@ var Loading = Backbone.View.extend({
                 'margin-left': '-17px'
             });
             $bottle.append(image1);
-        });
+        };
 
-        $(image2).load(function() {
+        image2.onload = function() {
             $(this).css({
                 'position': 'absolute',
                 'bottom': '38%',
@@ -176,9 +171,9 @@ var Loading = Backbone.View.extend({
             });
             $(this).addClass('loadingWater');
             $bottle.append(image2);
-        });
+        };
 
-        $(image3).load(function() {
+        image3.onload = function() {
             $(this).css({
                 'position': 'absolute',
                 'bottom': '38%',
@@ -190,31 +185,11 @@ var Loading = Backbone.View.extend({
                 'z-index': '50'
             });
             $bottle.append(image3);
-        });
-
-
-
-        /*async.each([image1, image2, image3], function(image, callback) {
-            $(image).load(function() {
-                $bottom.append($(this)[0]);
-                $(this).css({
-                    'position': 'absolute',
-                    'bottom': '30%',
-                    'text-align': 'center'
-                });
-                callback(null);
-            });
-            $(image).error(function() {
-                //todo 
-                callback('image load error!');
-            });
-        }, function(err) {
-            this.$el.append($bottom[0]);
-            console.log(err);
-        }.bind(this));*/
+        };
     },
 
     destroy: function() {
+        this.callback();
         this.snow.destroy();
         this.$el.detach();
     }
