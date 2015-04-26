@@ -65,7 +65,7 @@ var Loading = Backbone.View.extend({
     },
 
     initPercent: function() {
-        var $percentDiv = $('<div><span class="loadText">loading</span><span class="percent">0%</span></div>');
+        var $percentDiv = $('<div><span class="loadText">Loading</span><span class="percent">0%</span></div>');
         this.$el.append($percentDiv[0]);
 
         $percentDiv.css({
